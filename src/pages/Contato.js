@@ -22,42 +22,52 @@ function Contato() {
   return (
     <>
       <Header />
-      <div className="contato-container">
-        <h2>Entre em Contato</h2>
-        <p>Tem alguma dúvida? Preencha o formulário abaixo e entraremos em contato.</p>
-        
-        <form onSubmit={handleSubmit}>
-          <label>Nome:</label>
-          <input
-            type="text"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            required
-          />
+      <section className="contato-container">
+        <div className="contato-box">
+          <h2>Entre em Contato</h2>
+          <p>Tem alguma dúvida? Preencha o formulário abaixo e entraremos em contato.</p>
+          
+          <form onSubmit={handleSubmit}>
+            <label>Nome:</label>
+            <input
+              type="text"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              required
+              placeholder="Digite seu nome"
+            />
 
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Digite seu e-mail"
+            />
 
-          <label>Mensagem:</label>
-          <textarea
-            name="mensagem"
-            value={formData.mensagem}
-            onChange={handleChange}
-            required
-          ></textarea>
+            <label>Mensagem:</label>
+            <textarea
+              name="mensagem"
+              value={formData.mensagem}
+              onChange={handleChange}
+              required
+              placeholder="Digite sua mensagem"
+            ></textarea>
 
-          <button type="submit" className="btn">Enviar Mensagem</button>
-        </form>
+            <button type="submit" className="btn">Enviar Mensagem</button>
+          </form>
 
-        <Link to="/" className="btn-voltar">Voltar para Home</Link>
-      </div>
+          <Link to="/" className="btn-voltar">Voltar para Home</Link>
+        </div>
+      </section>
+
+      {/* Rodapé */}
+      <footer className="footer">
+        <p>&copy; 2025 HB - Todos os direitos reservados</p>
+      </footer>
     </>
   );
 }
