@@ -10,13 +10,35 @@ function Contato() {
     mensagem: "",
   });
 
+  const [status, setStatus] = useState(""); // Estado para feedback
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Mensagem enviada com sucesso!");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contato", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();sss
+
+      if (response.ok) {
+        setStatus("Mensagem enviada com sucesso!");
+        setFormData({ nome: "", email: "", mensagem: "" });
+      } else {
+        setStatus(data.error || "Erro ao enviar mensagem.");
+      }
+    } catch (error) {
+      setStatus("Erro ao conectar com o servidor.");
+    }
   };
 
   return (
@@ -27,6 +49,8 @@ function Contato() {
           <h2>Entre em Contato</h2>
           <p>Tem alguma dúvida? Preencha o formulário abaixo e entraremos em contato.</p>
           
+          {status && <p className="status-message">{status}</p>}
+
           <form onSubmit={handleSubmit}>
             <label>Nome:</label>
             <input
