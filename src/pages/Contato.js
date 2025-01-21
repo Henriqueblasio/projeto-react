@@ -28,7 +28,7 @@ function Contato() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();sss
+      const data = await response.json();
 
       if (response.ok) {
         setStatus("Mensagem enviada com sucesso!");
