@@ -20,7 +20,7 @@ function Contato() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/contato", {
+      const response = await fetch("http://localhost:5000/api/mensagens", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
