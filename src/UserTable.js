@@ -55,6 +55,7 @@ const UserTable = () => {
             <th>ID</th>
             <th>Usuário</th>
             <th>Email</th>
+            <th>Mensagem</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -86,6 +87,19 @@ const UserTable = () => {
                   />
                 ) : (
                   user.email
+                )}
+              </td>
+              <td>
+                {editando === user.id ? (
+                  <input
+                    type="text"
+                    value={editData.mensagem}
+                    onChange={(e) =>
+                      setEditData({ ...editData, mensagem: e.target.value })
+                    }
+                  />
+                ) : (
+                  user.mensagem
                 )}
               </td>
               <td>
